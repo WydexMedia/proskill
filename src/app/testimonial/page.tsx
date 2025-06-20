@@ -5,17 +5,17 @@ import React from "react";
 // Example video data (replace with your own video filenames and descriptions)
 const testimonials = [
   {
-    src: "/video/testimonial1.mp4",
+    src: "/video/testimonial1.MP4",
     description: "Proskill made my resin art so much easier! Highly recommended for all crafters.",
     author: "Zenha, Kannur"
   },
   {
-    src: "/video/testimonial2.mp4",
+    src: "/video/testimonial2.MP4",
     description: "Absolutely love Proskill! It’s a game-changer for anyone serious about resin art.",
     author: "Nourin, Malappuram"
   },
   {
-    src: "/video/testimonial3.mp4",
+    src: "/video/testimonial3.MP4",
     description: "Resin art used to be messy and frustrating—Proskill made it smooth, simple, and fun!",
     author: "Haleema, kozhikode"
   }
