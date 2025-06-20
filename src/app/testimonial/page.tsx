@@ -17,7 +17,7 @@ const testimonials = [
   {
     src: "/video/testimonial3.mp4",
     description: "Resin art used to be messy and frustrating—Proskill made it smooth, simple, and fun!",
-    author: "Lubna, kochi"
+    author: "Haleema, kozhikode"
   }
 ];
 
