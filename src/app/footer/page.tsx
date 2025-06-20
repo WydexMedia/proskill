@@ -49,7 +49,19 @@ export default function Footer() {
         </div>
 
         <div className="mt-4 text-center text-xs text-gray-500">
-          <p>ProSkill © {new Date().getFullYear()} All rights reserved</p>
+          <p>Proskill © {new Date().getFullYear()} All rights reserved</p>
+         <p>
+  Design & Developed by{' '}
+  <a
+    href="https://wydexmedia.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className=" hover:text-gray-300"
+  >
+    Wydex
+  </a>
+</p>
+
         </div>
       </div>
     </footer>
