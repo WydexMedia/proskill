@@ -81,7 +81,7 @@ export default function Home() {
         {shape && (
           <div className="w-full">
             <p className="mb-4 text-lg font-medium text-white text-left">
-              What are you planning to do with Tulsi Resin and Hardener?
+              What are you planning to do with Proskill Resin and Hardener?
             </p>
             <div className="flex gap-4 mb-6">
               <button
@@ -109,6 +109,7 @@ export default function Home() {
             <div className="flex gap-4 mb-6">
               <button
                 className={`btn${ratio === "2:1" ? " ring-2 ring-white" : ""}`}
+           
                 onClick={() => setRatio("2:1")}
               >
                 2:1
