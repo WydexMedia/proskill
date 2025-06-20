@@ -82,7 +82,7 @@ export default function Home() {
 
       {/* Menu Bar */}
       <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black bg-opacity-80">
-        <span className="text-white text-2xl font-bold tracking-wide">Proskill</span>
+        <span className="text-white text-2xl font-bold tracking-wide"><img src="/PROSKILL.png" style={{width:"68px" , height:"40px"}} alt="" /></span>
         <button
           className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
