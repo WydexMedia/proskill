@@ -1,5 +1,11 @@
 "use client";
 import React, { useState } from "react";
+import Footer from "@/app/footer/page";
+// pages/_app.js or _app.tsx
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 
 type Shape = "rectangle" | "circle";
 type Purpose = "coating" | "casting";
@@ -51,17 +57,63 @@ export default function Home() {
     cost = resinKg * 870;
   }
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 w-full">
-      <div className="bg-black rounded-3xl shadow-2xl p-10 w-full flex flex-col items-start">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
+    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 w-full relative">
+      {/* Background Layer */}
+      <div className="absolute inset-0 w-full h-full z-0 bg-white">
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            opacity: 0.4,
+            backgroundImage: "url('/doodle.png')",
+            backgroundRepeat: 'repeat',
+            backgroundSize: '250px 250px',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 0,
+          }}
+        />
+      </div>
+
+      {/* Menu Bar */}
+      <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black bg-opacity-80">
+        <span className="text-white text-2xl font-bold tracking-wide">Proskill</span>
+        <button
+          className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Open menu"
+        >
+          <span className="block w-7 h-1 bg-white mb-1 rounded transition-all" style={{transform: menuOpen ? 'rotate(45deg) translateY(8px)' : 'none'}}></span>
+          <span className={`block w-7 h-1 bg-white mb-1 rounded transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
+          <span className="block w-7 h-1 bg-white rounded transition-all" style={{transform: menuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'}}></span>
+        </button>
+        {menuOpen && (
+          <div className="absolute right-6 top-16 bg-black bg-opacity-95 rounded-xl shadow-lg py-4 px-8 flex flex-col gap-4 min-w-[180px] animate-fade-in z-30">
+            <a
+              href="/testimonial"
+              className="text-white text-lg font-semibold hover:text-gray-300 transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              Testimonials
+            </a>
+          </div>
+        )}
+      </nav>
+
+      <div className="bg-black bg-opacity-90 rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col items-start relative z-10 mt-20">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
           Proskill Resin Calculator
         </h1>
 
         {/* Step 1: Shape */}
         <div className="w-full">
           <p className="mb-4 text-lg font-medium text-white text-left">Please select an option:</p>
-          <div className="flex gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <button
               className={`btn${shape === "rectangle" ? " ring-2 ring-white" : ""}`}
               onClick={() => setShape("rectangle")}
@@ -83,7 +135,7 @@ export default function Home() {
             <p className="mb-4 text-lg font-medium text-white text-left">
               What are you planning to do with Proskill Resin and Hardener?
             </p>
-            <div className="flex gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 className={`btn${purpose === "coating" ? " ring-2 ring-white" : ""}`}
                 onClick={() => setPurpose("coating")}
@@ -106,7 +158,7 @@ export default function Home() {
             <p className="mb-4 text-lg font-medium text-white text-left">
               Which type of Epoxy resin hardener are you using?
             </p>
-            <div className="flex gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 className={`btn${ratio === "2:1" ? " ring-2 ring-white" : ""}`}
            
@@ -195,7 +247,7 @@ export default function Home() {
               </>
             )}
             <button
-              className="btn mt-6"
+              className="btn mt-6 w-full sm:w-auto"
               onClick={() => setStep(5)}
               disabled={
                 (shape === "rectangle" &&
@@ -215,19 +267,19 @@ export default function Home() {
             <div className="text-lg font-bold mb-2 text-white">
               Total Proskill resin required:
             </div>
-            <h2 className="text-2xl font-bold mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-white">
               Total {resinGm.toFixed(2)} Grams or {resinKg.toFixed(2)} Kg
             </h2>
-            <div className="text-xl font-semibold mb-2 text-white">
+            <div className="text-lg sm:text-xl font-semibold mb-2 text-white">
               Resin: {resinPart.toFixed(2)}Gm &nbsp; Hardener: {hardenerPart.toFixed(2)}Gm
             </div>
-            <div className="text-lg font-medium mb-2 text-white">
+            <div className="text-base sm:text-lg font-medium mb-2 text-white">
               Estimated cost: ₹{cost.toFixed(2)} (approx).
             </div>
             <div className="text-gray-300 mb-4">
               (Ratio selected: {ratio})
             </div>
-            <button className="btn" onClick={() => window.location.reload()}>
+            <button className="btn w-full sm:w-auto" onClick={() => window.location.reload()}>
               Start Over
             </button>
           </div>
@@ -264,9 +316,9 @@ export default function Home() {
           color: #fff;
         }
       `}</style>
-      <footer className="mt-10 text-gray-400 text-sm">
-        &copy; {new Date().getFullYear()} Proskill. All rights reserved.
-      </footer>
-    </div>
+     
+      </div>
+      <Footer />
+     </div>
   );
 }
