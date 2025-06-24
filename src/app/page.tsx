@@ -30,7 +30,7 @@ export default function Home() {
   if (step === 5) {
     // Conversion factors
     const inchToCm = 2.54;
-    const density = 1.1; // g/cm³
+    const density = 1.25; // g/cm³
     let areaCm2 = 0;
     let t = parseFloat(thickness);
     if (!t || isNaN(t)) t = 1; // default 1mm for coating
