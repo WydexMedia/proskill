@@ -107,7 +107,7 @@ export default function Home() {
 
       <div className="bg-black bg-opacity-90 rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col items-start relative z-10 mt-20">
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
-          Proskill Resin Calculator
+          Resin mixing calculator
         </h1>
 
         {/* Step 1: Shape */}

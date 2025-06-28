@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Proskill calculator",
-  description: "Proskill - Your Path to Success",
+  keywords:"Resin Mixing Calculator for Art |  Measure & Mix Perfectly",
+  description: "Resin Mixing Calculator for Art | Measure & Mix Perfectly. Get accurate resin ratios for flawless art. Free tool to plan, measure, and pour like a pro!",
 };
 
 export default function RootLayout({
