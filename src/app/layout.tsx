@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ✅ Google Analytics Scripts */}
-        <link rel="canonical" href="https://proskill.in/calculator" />
+        <link rel="canonical" href="https://calculator.proskilledu.com/" />
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-938MTSDRFJ"
