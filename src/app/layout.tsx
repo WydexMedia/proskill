@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ✅ Google Analytics Scripts */}
+        <meta name="google-site-verification" content="bn39xK-3Obdr-F2x0V9MtGRn1-Q1wxDkCGhvSkQp8t8" />
         <link rel="canonical" href="https://calculator.proskilledu.com/" />
         <Script
           strategy="afterInteractive"
