@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Resin mixing calculator | Use Resin Calculator for Accurate Art Projects",
   keywords:"Resin Mixing Calculator for Art |  Measure & Mix Perfectly",
-  description: "Resin Mixing Calculator. Use Resin Calculator for Accurate Art Projects to plan, measure, and mix perfectly every time. Your free solution for perfect pours.",
+  description: "Resin Mixing Calculator. Use Resin Calculator for Accurate Art Projects to plan, measure, and mix perfectly every time. Free tool for flawless pours.",
 };
 
 export default function RootLayout({
@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ✅ Google Analytics Scripts */}
+        <link rel="canonical" href="https://proskill.in/calculator" />
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-938MTSDRFJ"
