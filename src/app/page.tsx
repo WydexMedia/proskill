@@ -4,6 +4,7 @@ import Footer from "@/app/footer/page";
 // pages/_app.js or _app.tsx
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { Info } from 'lucide-react';
 config.autoAddCss = false
 
 
@@ -12,7 +13,8 @@ type Purpose = "coating" | "casting";
 type Ratio = "2:1" | "3:1";
 
 export default function Home() {
-  const [step, setStep] = useState(1);
+  const [step, setStep ] = useState(1);
+  const [showTips,setShowTips] = useState(false)
   const [shape, setShape] = useState<Shape | null>(null);
   const [purpose, setPurpose] = useState<Purpose | null>(null);
   const [ratio, setRatio] = useState<Ratio | null>(null);
@@ -30,10 +32,10 @@ export default function Home() {
   if (step === 5) {
     // Conversion factors
     const inchToCm = 2.54;
-    const density = 1.1; // g/cm³
+    const density = 1; // g/cm³
     let areaCm2 = 0;
     let t = parseFloat(thickness);
-    if (!t || isNaN(t)) t = 1; // default 1mm for coating
+    if (!t || isNaN(t)) t = 1.3; // default 1mm for coating
     if (shape === "rectangle") {
       const l = parseFloat(length) * inchToCm;
       const b = parseFloat(breadth) * inchToCm;
@@ -248,7 +250,11 @@ export default function Home() {
             )}
             <button
               className="btn mt-6 w-full sm:w-auto"
-              onClick={() => setStep(5)}
+               onClick={() => {
+          setStep(5);
+          setShowTips(true);
+        }}
+              
               disabled={
                 (shape === "rectangle" &&
                   (!length || !breadth || (purpose === "casting" && !thickness))) ||
@@ -284,7 +290,25 @@ export default function Home() {
             </button>
           </div>
         )}
+       {showTips && (
+        <div className="bg-blue-50 p-6 rounded-lg border border-black-200 mt-4">
+          <h3 className="flex items-center gap-2 text-lg font-semibold mb-3" style={{ color: "black" }}>
+            <Info className="w-5 h-5 text-black" />
+            Pro Tips
+          </h3>
+          <ul className="space-y-2 text-sm text-black">
+            <li>• Always measure by weight for more accurate results</li>
+            <li>• Mix thoroughly for at least 3-5 minutes</li>
+            <li>• Use the two-cup mixing method to avoid unmixed spots</li>
+            <li>• Add 10% extra resin to account for mixing losses</li>
+            <li>• Work in a well-ventilated area</li>
+            <li>• Scrape sides and bottom of mixing container</li>
+          </ul>
+        </div>
+      )}
       </div>
+
+       
       <style jsx>{`
         .btn {
           background: #fff;
@@ -316,6 +340,8 @@ export default function Home() {
           color: #fff;
         }
       `}</style>
+
+           
      
       </div>
       <Footer />
