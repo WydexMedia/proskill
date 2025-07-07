@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Footer from "@/app/footer/page";
+import Head from "next/head";
 // pages/_app.js or _app.tsx
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -62,121 +63,124 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div>
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 w-full relative">
-      {/* Background Layer */}
-      <div className="absolute inset-0 w-full h-full z-0 bg-white">
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            opacity: 0.4,
-            backgroundImage: "url('/doodle.png')",
-            backgroundRepeat: 'repeat',
-            backgroundSize: '250px 250px',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            zIndex: 0,
-          }}
-        />
-      </div>
-
-      {/* Menu Bar */}
-      <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black bg-opacity-80">
-        <span className="text-white text-2xl font-bold tracking-wide"><img src="/PROSKILL.png" style={{width:"68px" , height:"40px"}} alt="" /></span>
-        <button
-          className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Open menu"
-        >
-          <span className="block w-7 h-1 bg-white mb-1 rounded transition-all" style={{transform: menuOpen ? 'rotate(45deg) translateY(8px)' : 'none'}}></span>
-          <span className={`block w-7 h-1 bg-white mb-1 rounded transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
-          <span className="block w-7 h-1 bg-white rounded transition-all" style={{transform: menuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'}}></span>
-        </button>
-        {menuOpen && (
-          <div className="absolute right-6 top-16 bg-black bg-opacity-95 rounded-xl shadow-lg py-4 px-8 flex flex-col gap-4 min-w-[180px] animate-fade-in z-30">
-            <a
-              href="/testimonial"
-              className="text-white text-lg font-semibold hover:text-gray-300 transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Testimonials
-            </a>
-          </div>
-        )}
-      </nav>
-
-      <div className="bg-black bg-opacity-90 rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col items-start relative z-10 mt-20">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
-          Proskill Resin Calculator
-        </h1>
-
-        {/* Step 1: Shape */}
-        <div className="w-full">
-          <p className="mb-4 text-lg font-medium text-white text-left">Please select an option:</p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <button
-              className={`btn${shape === "rectangle" ? " ring-2 ring-white" : ""}`}
-              onClick={() => setShape("rectangle")}
-            >
-              Rectangle/Square
-            </button>
-            <button
-              className={`btn${shape === "circle" ? " ring-2 ring-white" : ""}`}
-              onClick={() => setShape("circle")}
-            >
-              Circle
-            </button>
-          </div>
+    <>
+      <Head>
+        <link rel="canonical" href="https://proskill.in/calculator" />
+      </Head>
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 w-full relative">
+        {/* Background Layer */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-white">
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              opacity: 0.4,
+              backgroundImage: "url('/doodle.png')",
+              backgroundRepeat: 'repeat',
+              backgroundSize: '250px 250px',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              zIndex: 0,
+            }}
+          />
         </div>
 
-        {/* Step 2: Purpose */}
-        {shape && (
-          <div className="w-full">
-            <p className="mb-4 text-lg font-medium text-white text-left">
-              What are you planning to do with Proskill Resin and Hardener?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <button
-                className={`btn${purpose === "coating" ? " ring-2 ring-white" : ""}`}
-                onClick={() => setPurpose("coating")}
+        {/* Menu Bar */}
+        <nav className="fixed top-0 left-0 w-full z-20 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black bg-opacity-80">
+          <span className="text-white text-2xl font-bold tracking-wide"><img src="/PROSKILL.png" style={{width:"68px" , height:"40px"}} alt="" /></span>
+          <button
+            className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Open menu"
+          >
+            <span className="block w-7 h-1 bg-white mb-1 rounded transition-all" style={{transform: menuOpen ? 'rotate(45deg) translateY(8px)' : 'none'}}></span>
+            <span className={`block w-7 h-1 bg-white mb-1 rounded transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
+            <span className="block w-7 h-1 bg-white rounded transition-all" style={{transform: menuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'}}></span>
+          </button>
+          {menuOpen && (
+            <div className="absolute right-6 top-16 bg-black bg-opacity-95 rounded-xl shadow-lg py-4 px-8 flex flex-col gap-4 min-w-[180px] animate-fade-in z-30">
+              <a
+                href="/testimonial"
+                className="text-white text-lg font-semibold hover:text-gray-300 transition-colors"
+                onClick={() => setMenuOpen(false)}
               >
-                Coating
-              </button>
-              <button
-                className={`btn${purpose === "casting" ? " ring-2 ring-white" : ""}`}
-                onClick={() => setPurpose("casting")}
-              >
-                Casting
-              </button>
+                Testimonials
+              </a>
             </div>
-          </div>
-        )}
+          )}
+        </nav>
 
-        {/* Step 3: Ratio */}
-        {purpose && (
+        <div className="bg-black bg-opacity-90 rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col items-start relative z-10 mt-20">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
+            Resin mixing calculator
+          </h1>
+
+          {/* Step 1: Shape */}
           <div className="w-full">
-            <p className="mb-4 text-lg font-medium text-white text-left">
-              Which type of Epoxy resin hardener are you using?
-            </p>
+            <p className="mb-4 text-lg font-medium text-white text-left">Please select an option:</p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
-                className={`btn${ratio === "2:1" ? " ring-2 ring-white" : ""}`}
-           
-                onClick={() => setRatio("2:1")}
+                className={`btn${shape === "rectangle" ? " ring-2 ring-white" : ""}`}
+                onClick={() => setShape("rectangle")}
               >
-                2:1
+                Rectangle/Square
               </button>
               <button
-                className={`btn${ratio === "3:1" ? " ring-2 ring-white" : ""}`}
-                onClick={() => setRatio("3:1")}
+                className={`btn${shape === "circle" ? " ring-2 ring-white" : ""}`}
+                onClick={() => setShape("circle")}
               >
-                3:1
+                Circle
               </button>
             </div>
           </div>
-        )}
+
+          {/* Step 2: Purpose */}
+          {shape && (
+            <div className="w-full">
+              <p className="mb-4 text-lg font-medium text-white text-left">
+                What are you planning to do with Proskill Resin and Hardener?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <button
+                  className={`btn${purpose === "coating" ? " ring-2 ring-white" : ""}`}
+                  onClick={() => setPurpose("coating")}
+                >
+                  Coating
+                </button>
+                <button
+                  className={`btn${purpose === "casting" ? " ring-2 ring-white" : ""}`}
+                  onClick={() => setPurpose("casting")}
+                >
+                  Casting
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Ratio */}
+          {purpose && (
+            <div className="w-full">
+              <p className="mb-4 text-lg font-medium text-white text-left">
+                Which type of Epoxy resin hardener are you using?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                <button
+                  className={`btn${ratio === "2:1" ? " ring-2 ring-white" : ""}`}
+           
+                  onClick={() => setRatio("2:1")}
+                >
+                  2:1
+                </button>
+                <button
+                  className={`btn${ratio === "3:1" ? " ring-2 ring-white" : ""}`}
+                  onClick={() => setRatio("3:1")}
+                >
+                  3:1
+                </button>
+              </div>
+            </div>
+          )}
 
         {/* Step 4: Dimensions */}
         {ratio && (
@@ -250,11 +254,7 @@ export default function Home() {
             )}
             <button
               className="btn mt-6 w-full sm:w-auto"
-               onClick={() => {
-          setStep(5);
-          setShowTips(true);
-        }}
-              
+              onClick={() => setStep(5)}
               disabled={
                 (shape === "rectangle" &&
                   (!length || !breadth || (purpose === "casting" && !thickness))) ||
@@ -290,25 +290,7 @@ export default function Home() {
             </button>
           </div>
         )}
-       {showTips && (
-        <div className="bg-blue-50 p-6 rounded-lg border border-black-200 mt-4">
-          <h3 className="flex items-center gap-2 text-lg font-semibold mb-3" style={{ color: "black" }}>
-            <Info className="w-5 h-5 text-black" />
-            Pro Tips
-          </h3>
-          <ul className="space-y-2 text-sm text-black">
-            <li>• Always measure by weight for more accurate results</li>
-            <li>• Mix thoroughly for at least 3-5 minutes</li>
-            <li>• Use the two-cup mixing method to avoid unmixed spots</li>
-            <li>• Add 10% extra resin to account for mixing losses</li>
-            <li>• Work in a well-ventilated area</li>
-            <li>• Scrape sides and bottom of mixing container</li>
-          </ul>
-        </div>
-      )}
       </div>
-
-       
       <style jsx>{`
         .btn {
           background: #fff;
@@ -340,11 +322,9 @@ export default function Home() {
           color: #fff;
         }
       `}</style>
-
-           
      
       </div>
       <Footer />
-     </div>
+    </>
   );
 }
