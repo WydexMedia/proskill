@@ -16,6 +16,7 @@ type Ratio = "2:1" | "3:1";
 export default function Home() {
   const [step, setStep ] = useState(1);
   const [showTips,setShowTips] = useState(false)
+  const [showCalculationInfo, setShowCalculationInfo] = useState(false);
   const [shape, setShape] = useState<Shape | null>(null);
   const [purpose, setPurpose] = useState<Purpose | null>(null);
   const [ratio, setRatio] = useState<Ratio | null>(null);
@@ -112,9 +113,66 @@ export default function Home() {
         </nav>
 
         <div className="bg-black bg-opacity-90 rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 w-full max-w-full sm:max-w-2xl md:max-w-3xl flex flex-col items-start relative z-10 mt-20">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 drop-shadow-lg text-left w-full">
-            Resin mixing calculator
-          </h1>
+          <div className="flex items-center justify-between w-full mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+              Resin mixing calculator
+            </h1>
+            <button
+              className="ml-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-colors"
+              onClick={() => setShowCalculationInfo(!showCalculationInfo)}
+              aria-label="Show calculation information"
+            >
+              <Info className="w-6 h-6 text-white" />
+            </button>
+          </div>
+
+          {/* Calculation Information Panel */}
+          {showCalculationInfo && (
+            <div className="w-full bg-white bg-opacity-10 rounded-2xl p-6 mb-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-4">How We Calculate Your Resin Requirements</h3>
+              <div className="space-y-4 text-white">
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">📐 Area Calculation</h4>
+                  <p className="text-sm leading-relaxed">
+                    • <strong>Rectangle:</strong> Length × Breadth (converted from inches to cm)<br/>
+                    • <strong>Circle:</strong> π × (Diameter/2)² (using 3.14159 for precision)
+                  </p>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">🧪 Resin Formula</h4>
+                  <p className="text-sm leading-relaxed">
+                    Our calculation uses the industry-standard formula:<br/>
+                    <strong>Resin (grams) = Area (cm²) × Thickness (mm) × Density (g/cm³) ÷ 10</strong>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">⚖️ Mixing Ratios</h4>
+                  <p className="text-sm leading-relaxed">
+                    • <strong>2:1 Ratio:</strong> 2 parts resin + 1 part hardener<br/>
+                    • <strong>3:1 Ratio:</strong> 3 parts resin + 1 part hardener<br/>
+                    <em>Always measure by weight for best results!</em>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-lg mb-2">📏 Default Values</h4>
+                  <p className="text-sm leading-relaxed">
+                    • <strong>Coating thickness:</strong> 1.3mm (typical for protective coatings)<br/>
+                    • <strong>Density:</strong> 1 g/cm³ (standard for most epoxy resins)<br/>
+                    • <strong>Cost estimate:</strong> ₹870/kg (includes resin + hardener)
+                  </p>
+                </div>
+
+                <div className="bg-yellow-500 bg-opacity-20 rounded-lg p-3 mt-4">
+                  <p className="text-sm font-medium">
+                    💡 <strong>Pro Tip:</strong> Always prepare 10-15% extra resin to account for mixing losses and ensure complete coverage!
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Step 1: Shape */}
           <div className="w-full">
@@ -198,6 +256,7 @@ export default function Home() {
                       className="input"
                       value={length}
                       onChange={(e) => setLength(e.target.value)}
+                      placeholder="e.g., 12"
                     />
                   </label>
                   <label className="text-white">
@@ -207,6 +266,7 @@ export default function Home() {
                       className="input"
                       value={breadth}
                       onChange={(e) => setBreadth(e.target.value)}
+                      placeholder="e.g., 8"
                     />
                   </label>
                   {purpose === "casting" && (
@@ -217,6 +277,7 @@ export default function Home() {
                         className="input"
                         value={thickness}
                         onChange={(e) => setThickness(e.target.value)}
+                        placeholder="e.g., 5"
                       />
                     </label>
                   )}
@@ -236,6 +297,7 @@ export default function Home() {
                       className="input"
                       value={diameter}
                       onChange={(e) => setDiameter(e.target.value)}
+                      placeholder="e.g., 10"
                     />
                   </label>
                   {purpose === "casting" && (
@@ -246,6 +308,7 @@ export default function Home() {
                         className="input"
                         value={thickness}
                         onChange={(e) => setThickness(e.target.value)}
+                        placeholder="e.g., 5"
                       />
                     </label>
                   )}
@@ -285,6 +348,21 @@ export default function Home() {
             <div className="text-gray-300 mb-4">
               (Ratio selected: {ratio})
             </div>
+            
+            {/* Additional calculation details */}
+            <div className="bg-white bg-opacity-10 rounded-lg p-4 mb-4">
+              <h4 className="font-semibold text-black mb-2">📊 Calculation Details:</h4>
+              <div className="text-sm text-black space-y-1">
+                <p className="text-black">• Surface area: {shape === "rectangle" ? 
+                  `${(parseFloat(length) * 2.54).toFixed(1)} × ${(parseFloat(breadth) * 2.54).toFixed(1)} = ${((parseFloat(length) * 2.54) * (parseFloat(breadth) * 2.54)).toFixed(1)} cm²` :
+                  `π × (${(parseFloat(diameter) * 2.54 / 2).toFixed(1)})² = ${(Math.PI * Math.pow(parseFloat(diameter) * 2.54 / 2, 2)).toFixed(1)} cm²`
+                }</p>
+                <p>• Thickness: {parseFloat(thickness) || 1.3} mm</p>
+                <p>• Density: 1 g/cm³</p>
+                <p>• Formula: Area × Thickness × Density ÷ 10</p>
+              </div>
+            </div>
+            
             <button className="btn w-full sm:w-auto" onClick={() => window.location.reload()}>
               Start Over
             </button>
@@ -306,6 +384,11 @@ export default function Home() {
           background: #888;
           color: #fff;
         }
+        .btn:disabled {
+          background: #ccc;
+          color: #888;
+          cursor: not-allowed;
+        }
         .input {
           width: 100%;
           padding: 0.5rem;
@@ -315,10 +398,13 @@ export default function Home() {
           background: #fff;
           color: #000;
         }
+        .input::placeholder {
+          color: #999;
+        }
         label {
           color: #fff;
         }
-        p, .text-lg, .font-medium {
+         .text-lg, .font-medium {
           color: #fff;
         }
       `}</style>
