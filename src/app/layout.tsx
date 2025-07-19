@@ -27,15 +27,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Analytics Scripts */}
-        <meta name="google-site-verification" content="bn39xK-3Obdr-F2x0V9MtGRn1-Q1wxDkCGhvSkQp8t8" />
+      <meta name="google-site-verification" content="QWHCTql45sfxfC041X4NKX-jcfFYro27GZbChgGmFoM" />
+        {/* Google tag (gtag.js) for G-44ZV4KNT2H */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-44ZV4KNT2H"
+        />
+        <Script
+          id="gtag-init-44ZV4KNT2H"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-44ZV4KNT2H');
+            `,
+          }}
+        />
         <link rel="canonical" href="https://calculator.proskilledu.com/" />
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-938MTSDRFJ"
         />
         <Script
-          id="gtag-init"
+          id="gtag-init-938MTSDRFJ"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
