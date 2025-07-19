@@ -118,38 +118,43 @@ export default function Home() {
               Resin mixing calculator
             </h1>
             <button
-              className="ml-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-colors"
-              onClick={() => setShowCalculationInfo(!showCalculationInfo)}
-              aria-label="Show calculation information"
-            >
-              <Info className="w-6 h-6 text-white" />
-            </button>
+    className="ml-4 p-2 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-colors"
+    onClick={() => setShowCalculationInfo(!showCalculationInfo)}
+    aria-label="Show calculation information"
+  >
+    <Info className="w-6 h-6 text-black cursor-pointer" />
+  </button>
+
+  {/* Tooltip */}
+  <span className="absolute left-full top-1/2 -translate-y-1/2 ml-2 px-3 py-1 text-sm text-white bg-black rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+    Please click here for more information
+  </span>
           </div>
 
           {/* Calculation Information Panel */}
           {showCalculationInfo && (
-            <div className="w-full bg-white bg-opacity-10 rounded-2xl p-6 mb-6 backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-white mb-4">How We Calculate Your Resin Requirements</h3>
+            <div className="w-full bg-white bg-opacity-10 rounded-2xl p-6 mb-6 backdrop-blur-sm ">
+              <h3 className="text-xl font-bold text-black mb-4">How We Calculate Your Resin Requirements</h3>
               <div className="space-y-4 text-white">
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">📐 Area Calculation</h4>
-                  <p className="text-sm leading-relaxed">
+                  <h4 className="font-semibold text-black text-lg mb-2">📐 Area Calculation</h4>
+                  <p className="text-sm text-black leading-relaxed">
                     • <strong>Rectangle:</strong> Length × Breadth (converted from inches to cm)<br/>
                     • <strong>Circle:</strong> π × (Diameter/2)² (using 3.14159 for precision)
                   </p>
                 </div>
                 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">🧪 Resin Formula</h4>
-                  <p className="text-sm leading-relaxed">
+                  <h4 className="font-semibold text-black text-lg mb-2">🧪 Resin Formula</h4>
+                  <p className="text-sm  text-black leading-relaxed">
                     Our calculation uses the industry-standard formula:<br/>
                     <strong>Resin (grams) = Area (cm²) × Thickness (mm) × Density (g/cm³) ÷ 10</strong>
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">⚖️ Mixing Ratios</h4>
-                  <p className="text-sm leading-relaxed">
+                  <h4 className="font-semibold text-black text-lg mb-2">⚖️ Mixing Ratios</h4>
+                  <p className="text-sm  text-black leading-relaxed">
                     • <strong>2:1 Ratio:</strong> 2 parts resin + 1 part hardener<br/>
                     • <strong>3:1 Ratio:</strong> 3 parts resin + 1 part hardener<br/>
                     <em>Always measure by weight for best results!</em>
@@ -157,8 +162,8 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">📏 Default Values</h4>
-                  <p className="text-sm leading-relaxed">
+                  <h4 className="font-semibold text-black text-lg mb-2">📏 Default Values</h4>
+                  <p className="text-sm text-black leading-relaxed">
                     • <strong>Coating thickness:</strong> 1.3mm (typical for protective coatings)<br/>
                     • <strong>Density:</strong> 1 g/cm³ (standard for most epoxy resins)<br/>
                     • <strong>Cost estimate:</strong> ₹870/kg (includes resin + hardener)

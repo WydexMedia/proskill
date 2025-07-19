@@ -37,14 +37,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 flex justify-center space-x-6 text-gray-500 text-xl">
-          <a href="https://wa.me/917034688802" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <FontAwesomeIcon icon={faWhatsapp} className="hover:text-white" />
+          <a href="https://wa.me/917034688802" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" >
+            <FontAwesomeIcon icon={faWhatsapp} />
           </a>
           <a href="mailto:proskilledu@gmail.com" aria-label="Email">
             <FontAwesomeIcon icon={faEnvelope} className="hover:text-white" />
           </a>
           <a href="https://www.instagram.com/the.proskill/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <FontAwesomeIcon icon={faInstagram} className="hover:text-white" />
+            <FontAwesomeIcon icon={faInstagram} className="hover:text-white " />
           </a>
         </div>
 
